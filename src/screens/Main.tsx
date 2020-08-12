@@ -30,6 +30,9 @@ export default class MainScreen extends React.Component {
   _showDialog = () => this.setState({ error_visible: true });
   _hideDialog = () => this.setState({ error_visible: false });
 
+
+  
+
   getOrderData = () => {
     try{
       this.setState({

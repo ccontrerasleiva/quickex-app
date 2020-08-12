@@ -1020,6 +1020,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@leesiongchan/react-native-esc-pos@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@leesiongchan/react-native-esc-pos/-/react-native-esc-pos-0.8.0.tgz#c04e633a12b8ead885d2d112ba4fd50ea885599e"
+  integrity sha512-TxaMFyk3iJbcogpbGH1ZvQcotlKvQCDCNdCrPEQ4wjot+z28PcS6LLHbknqQpHSo15nK64zSxRmSshFAqNjAjA==
+
 "@material-ui/core@^4.9.7":
   version "4.9.7"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.9.7.tgz#0c1caf123278770f34c5d8e9ecd9e1314f87a621"
