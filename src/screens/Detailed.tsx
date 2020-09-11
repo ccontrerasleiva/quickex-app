@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, ScrollView, KeyboardAvoidingView, NativeModules } from 'react-native';
 import { Button, Appbar, Dialog, Portal, Paragraph, Provider, DataTable } from 'react-native-paper';
 import constants from '../config/constants';
 import Moment from 'moment';
 import * as ImagePicker from 'expo-image-picker';
+import RNXprinter from 'react-native-xprinter';
 
 export default class DetailedScreen extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class DetailedScreen extends React.Component {
         icon:"finance",
         button_text:"Recibir Pago",
         disabled:true,
-        showButtons : false
+        showButtons : true
       };
   }
   _goBack = () => this.props.navigation.navigate('Inicio', {data: this.state.data});
@@ -32,6 +33,7 @@ export default class DetailedScreen extends React.Component {
   _hideButtons = () => this.setState({ showButtons : false});
   _showButtons = () => this.setState({ showButtons : true});
 
+  
 
   _renderButtons = () => {
     if (this.state.showButtons) {
@@ -47,7 +49,11 @@ export default class DetailedScreen extends React.Component {
                     {this.state.button_text}
                 </Button>
               </View>
-              
+              <View style={styles.inputView}>
+                <Button icon="print" mode="contained" style={styles.button} onPress={this.printPage}>
+                    Imprimir
+                </Button>
+              </View>
           </View>
         )
     } else {
@@ -100,6 +106,15 @@ export default class DetailedScreen extends React.Component {
     }
 
   }
+
+  printPage = async() => {
+    let printerList = await RNXprinter.getDeviceList();
+    await RNXprinter.selectDevice(printerList[0].address);
+    RNXprinter.pickPrinter();
+    await RNXprinter.printDemoPage();
+  }
+
+
   openCamera = async() => {
     this.setState({
       disabled:true,
