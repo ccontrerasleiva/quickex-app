@@ -4,7 +4,7 @@ import { Button, Appbar, Dialog, Portal, Paragraph, Provider, DataTable } from '
 import constants from '../config/constants';
 import Moment from 'moment';
 import * as ImagePicker from 'expo-image-picker';
-import RNXprinter from 'react-native-xprinter';
+//import {BluetoothManager,BluetoothEscposPrinter,BluetoothTscPrinter} from 'react-native-bluetooth-escpos-printer';
 
 export default class DetailedScreen extends React.Component {
   constructor(props) {
@@ -50,7 +50,7 @@ export default class DetailedScreen extends React.Component {
                 </Button>
               </View>
               <View style={styles.inputView}>
-                <Button icon="print" mode="contained" style={styles.button} onPress={this.printPage}>
+                <Button mode="contained" style={styles.button} onPress={this.printPage}>
                     Imprimir
                 </Button>
               </View>
@@ -108,10 +108,11 @@ export default class DetailedScreen extends React.Component {
   }
 
   printPage = async() => {
-    let printerList = await RNXprinter.getDeviceList();
-    await RNXprinter.selectDevice(printerList[0].address);
-    RNXprinter.pickPrinter();
-    await RNXprinter.printDemoPage();
+    /*BluetoothManager.isBluetoothEnabled().then((enabled)=> {
+      alert(enabled) // enabled ==> true /false
+    }, (err)=> {
+        alert(err)
+    });*/
   }
 
 
